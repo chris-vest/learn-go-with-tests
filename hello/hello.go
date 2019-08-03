@@ -2,13 +2,18 @@ package main
 
 import "fmt"
 
-// Hello returns "Hello, world"
-// Separate concerns to make it easier to test
+const englishHelloPrefix = "Hello, "
+
+// Hello returns "Hello, " + name
+// Separated concerns to make it easier to test
 func Hello(name string) string {
-	return fmt.Sprintf("Hello, %s", name)
+	if name == "" {
+		name = "World"
+	}
+	return fmt.Sprint(englishHelloPrefix, name)
 }
 
 func main() {
-	name := "Chris"
+	name := ""
 	fmt.Println(Hello(name))
 }
